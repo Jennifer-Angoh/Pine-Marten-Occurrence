@@ -1,6 +1,6 @@
 ########### Title - Pine marten multi-scale occupancy model 
 ########### Date - 2022.08.12
-########### Author - S. Y. Jennifer Angoh
+########### Author - Angoh; Thorsen; Hofmeester
 
 
 rm(list = ls()) # Clear the workspace
@@ -11,7 +11,7 @@ y <- readRDS("dataarray.full.rds")
 dim(y)
 dimnames(y)
 
-##### Import the covariates and order them in the order of the new name labels (very important) #####
+##### Import the covariates and order them in the order of the new name labels #####
 cov.grid <- readRDS("cov.grid.sd.rds")
 cov.loc <- readRDS("cov.loc.sd.rds")
 cov.tempo <- readRDS("cov.tempo.sd.rds") # tempo as in temporal
@@ -23,7 +23,7 @@ cov.loc.old <- readRDS("cov.loc.old_forest.rds")
 
 ##### Create object with all the relations between ct, grid and covs ################
 labels <- readRDS("Grid_loc_newloc_relation.rds")
-# Finding new the grid cells and camera traps
+# Finding new grid cells and camera traps
 new.grid.label <- 
   data.frame(old_name = unlist(dimnames(y)[2]),
              new_grid_id = 1:length(unlist(dimnames(y)[2]))) #Add new_grid_id column 
@@ -463,7 +463,7 @@ cat(file="PM-Mocc-20220812.txt",
   
   ##### Categorical covariates
   beta.area.psi[1] <- 0       # First level is reference category
-  for(i in 2:5) {                    #Agdtel = 1, Hedmark = 2, Nomøst =3, NorlandS =4, Troms=5
+  for(i in 2:5) {                    #Agdtel = 1, Hedmark = 2, NomÃ¸st =3, NorlandS =4, Troms=5
     beta.area.psi[i] ~ dnorm(0,0.2) } # Difference between each study area and other 
     
   
